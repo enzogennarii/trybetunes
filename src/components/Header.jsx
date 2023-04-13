@@ -32,22 +32,26 @@ class Header extends Component {
       <header data-testid="header-component">
         {isLoading ? <Loading /> : (
           <>
-            <h1>Trybetunes</h1>
-            <h2
-              className="user-name"
-              data-testid="header-user-name"
-            >
-              { name }
-            </h2>
-            <Link to="/search" data-testid="link-to-search">
-              <p>Search</p>
-            </Link>
-            <Link to="/favorites" data-testid="link-to-favorites">
-              <p>Favorites</p>
-            </Link>
-            <Link to="/profile" data-testid="link-to-profile">
-              <p>Profile</p>
-            </Link>
+            <section className="main-header">
+              <h1>Trybetunes</h1>
+              <h3
+                className="user-name"
+                data-testid="header-user-name"
+              >
+                { name }
+              </h3>
+            </section>
+            <section className="navigation">
+              <Link to="/search" data-testid="link-to-search">
+                <h2>Pesquisa</h2>
+              </Link>
+              <Link to="/favorites" data-testid="link-to-favorites">
+                <h2>Favoritas</h2>
+              </Link>
+              <Link to="/profile" data-testid="link-to-profile">
+                <h2>Perfil</h2>
+              </Link>
+            </section>
           </>
         )}
       </header>
