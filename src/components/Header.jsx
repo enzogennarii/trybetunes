@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import { getUser } from '../services/userAPI';
 import Loading from './Loading';
 
@@ -38,6 +39,15 @@ class Header extends Component {
             >
               { name }
             </h2>
+            <Link to="/search" data-testid="link-to-search">
+              <p>Search</p>
+            </Link>
+            <Link to="/favorites" data-testid="link-to-favorites">
+              <p>Favorites</p>
+            </Link>
+            <Link to="/profile" data-testid="link-to-profile">
+              <p>Profile</p>
+            </Link>
           </>
         )}
       </header>
