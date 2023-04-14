@@ -66,28 +66,33 @@ class Search extends Component {
     } = this.state;
 
     return (
-      <div data-testid="page-search">
+      <div className="page-search" data-testid="page-search">
         <Header />
-        <h1>Search</h1>
-        {isSearchLoading ? <Loading /> : (
-          <>
-            <Input
-              id="search-artist-input"
-              name="searchInput"
-              onChange={ this.handleInputChange }
-              placeholder="Nome do artista"
-              type="text"
-              value={ searchInput }
-            />
-            <Button
-              disabled={ disableSearchBtn }
-              id="search-artist-button"
-              onClick={ this.handleSearchBtn }
-              text="Procurar"
-            />
-          </>
-        )}
-        {!(searchResults.length) ? <p>Nenhum álbum foi encontrado</p> : (
+        <section className="search-content">
+          {isSearchLoading ? <Loading /> : (
+            <>
+              <Input
+                id="search-artist-input"
+                name="searchInput"
+                onChange={ this.handleInputChange }
+                placeholder="Nome do artista"
+                type="text"
+                value={ searchInput }
+              />
+              <Button
+                disabled={ disableSearchBtn }
+                id="search-artist-button"
+                onClick={ this.handleSearchBtn }
+                text="Procurar"
+              />
+            </>
+          )}
+        </section>
+        {!(searchResults.length) ? (
+          <section className="search-results">
+            <h3>Nenhum álbum foi encontrado</h3>
+          </section>
+        ) : (
           <section className="search-results">
             <h3>{`Resultado de álbuns de: ${artistSearched}`}</h3>
             <ul className="collection-list">

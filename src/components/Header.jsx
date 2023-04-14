@@ -29,28 +29,35 @@ class Header extends Component {
     const { isLoading, name } = this.state;
 
     return (
-      <header data-testid="header-component">
+      <header className="header" data-testid="header-component">
         {isLoading ? <Loading /> : (
           <>
             <section className="main-header">
-              <h1>Trybetunes</h1>
+              <img
+                className="logo"
+                src="../assets/logo.png"
+                alt="logo"
+              />
+            </section>
+            <section className="navigation">
+              <Link to="/search" data-testid="link-to-search">
+                <h2 className="navigation-item">Pesquisa</h2>
+              </Link>
+              <Link to="/favorites" data-testid="link-to-favorites">
+                <h2 className="navigation-item">Favoritas</h2>
+              </Link>
+              <Link to="/profile" data-testid="link-to-profile">
+                <h2 className="navigation-item">Perfil</h2>
+              </Link>
+            </section>
+            <section className="user-icon">
+              <img className="user-photo" src="" alt="" />
               <h3
                 className="user-name"
                 data-testid="header-user-name"
               >
                 { name }
               </h3>
-            </section>
-            <section className="navigation">
-              <Link to="/search" data-testid="link-to-search">
-                <h2>Pesquisa</h2>
-              </Link>
-              <Link to="/favorites" data-testid="link-to-favorites">
-                <h2>Favoritas</h2>
-              </Link>
-              <Link to="/profile" data-testid="link-to-profile">
-                <h2>Perfil</h2>
-              </Link>
             </section>
           </>
         )}

@@ -1,0 +1,226 @@
+* {
+  box-sizing: border-box;
+  font-family: Epilogue , Ubuntu , sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+.login-page {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw;
+}
+
+.login-section {
+  align-items: center;
+  background-color: white;
+  border: 1px solid rgb(119, 119, 119);
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  height: 45rem;
+  justify-content: space-around;
+  margin: auto;
+  width: 75rem;
+}
+
+.login-name-input {
+  border: 1px solid #003be5;
+  border-radius: 10rem;
+  color: black;
+  font-size: 1.6rem;
+  height: 4rem;
+  text-align: center;
+  width: 40rem;
+}
+
+.login-name-input:focus, .login-name-input:hover {
+  outline: 1.3px solid #003be5;
+}
+
+.login-submit-button {
+  background-color: #003be5;
+  border: none;
+  border-radius: 10rem;
+  color: white;
+  font-size: 1.6rem;
+  font-weight: 700;
+  height: 4rem;
+  text-align: center;
+  width: 20rem;
+}
+
+.login-submit-button:hover {
+  scale: 1.05;
+  transition: 1s;
+}
+
+.loading {
+  font-size: 1.6rem;
+}
+
+.header {
+  align-items: center;
+  background-color: #000b;
+  border: 1px solid black;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.6rem;
+  justify-content: space-around;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 25rem;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  height: 25%;
+  justify-content: space-between;
+}
+
+.navigation-item, .user-name {
+  color: black;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  line-height: 16px;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+.user-icon {
+  align-items: center;
+  display: flex;
+  gap: 0.8rem;
+  justify-content: space-between;
+}
+
+.user-photo {
+  border: 1px solid black;
+  border-radius: 50%;
+  height: 4rem;
+  width: 4rem;
+}
+
+.user-name {
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  line-height: 16px;
+  text-transform: capitalize;
+}
+
+.page-search {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-content {
+  align-items: center;
+  background-color: #000000ad;
+  display: flex;
+  gap: 2rem;
+  height: 20rem;
+  justify-content: center;
+  left: 25rem;
+  position: relative;
+  top: 0;
+  width: calc(100vw - 25rem);
+}
+
+.search-artist-input {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid #003be5;
+  border-radius: 2rem;
+  height: 4rem;
+  text-align: center;
+  width: 40rem;
+}
+
+.search-artist-input:focus, .search-artist-input:hover {
+  outline: 1.3px solid #003be5;
+}
+
+.search-artist-button {
+  background-color: #003be5;
+  border: none;
+  border-radius: 2rem;
+  color: white;
+  font-size: 1.6rem;
+  font-weight: 700;
+  height: 4rem;
+  text-align: center;
+  width: 10rem;
+}
+
+.search-artist-button:disabled {
+  background-color: #0039e5a2;
+}
+
+.search-results {
+  background-color: #00000086;
+  display: flex;
+  flex-direction: column;
+  left: 25rem;
+  min-height: calc(100vh - 20rem);
+  padding: 5rem;
+  position: relative;
+  top: 0;
+  width: calc(100vw - 25rem);
+}
+
+.search-results h3 {
+  align-self: center;
+  font-size: 1.6rem;
+  margin-bottom: 3rem;
+}
+
+.collection-list {
+  display: flex;
+  flex-flow: wrap;
+  gap: 5rem;
+  justify-content: space-around;
+  list-style: none;
+}
+
+.collection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 21rem;
+  overflow: hidden;
+  width: 15rem;
+}
+
+.collection-image {
+  border-radius: 1rem;
+  height: 15rem;
+  width: 15rem;
+}
+
+.collection-name {
+  color: #3d495c;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 150%;
+  overflow: hidden;
+}
+
+.artist-name {
+  color: #3d495c;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 150%;
+  overflow: hidden;
+}

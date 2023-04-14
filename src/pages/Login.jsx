@@ -49,15 +49,15 @@ class Login extends Component {
     const { disableBtn, isLoading, name } = this.state;
 
     return (
-      <div data-testid="page-login">
+      <div className="login-page" data-testid="page-login">
         {isLoading ? <Loading /> : (
-          <>
+          <section className="login-section">
             <h1>Login</h1>
-            <label htmlFor="login-name-input">Nome</label>
             <Input
               id="login-name-input"
               name="name"
               onChange={ this.handleInputChange }
+              placeholder="Qual é o seu nome?"
               type="text"
               value={ name }
             />
@@ -67,7 +67,7 @@ class Login extends Component {
               onClick={ this.handleClickLogin }
               text="Entrar"
             />
-          </>
+          </section>
         )}
       </div>
     );

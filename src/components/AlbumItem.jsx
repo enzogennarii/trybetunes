@@ -12,7 +12,7 @@ class AlbumItem extends Component {
     } = collection;
 
     return (
-      <li key={ collectionId }>
+      <li className="collection" key={ collectionId }>
         <img
           alt={ `Capa do álbum ${collectionName}` }
           className="collection-image"
