@@ -25,7 +25,7 @@ class MusicCard extends Component {
                 data-testid={ `checkbox-music-${track.trackId}` }
                 type="checkbox"
                 value={ track.trackId }
-                onClick={ onFavorite }
+                onChange={ onFavorite }
                 id="checkbox-favorite"
               />
               Favorita
@@ -38,11 +38,11 @@ class MusicCard extends Component {
 }
 
 MusicCard.defaultProps = {
-  favorite: [],
+  favorites: [],
 };
 
 MusicCard.propTypes = {
-  favorite: PropTypes.arrayOf(),
+  favorites: PropTypes.arrayOf(),
   onFavorite: PropTypes.func.isRequired,
   tracks: PropTypes.arrayOf(
     PropTypes.shape({
