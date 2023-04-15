@@ -77,7 +77,11 @@ class Album extends Component {
               <AlbumItem collection={ collection } />
             </section>
             <section className="tracks-section">
-              <MusicCard tracks={ tracks } onFavorite={ this.onFavorite } />
+              <MusicCard
+                favorites={ favoriteSongs }
+                tracks={ tracks }
+                onFavorite={ this.onFavorite }
+              />
             </section>
           </section>
         )}
