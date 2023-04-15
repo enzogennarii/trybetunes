@@ -18,8 +18,8 @@ class AlbumItem extends Component {
           className="collection-image"
           src={ artworkUrl100 }
         />
-        <p className="collection-name">{ collectionName }</p>
-        <p className="artist-name">{ artistName }</p>
+        <p data-testid="album-name" className="collection-name">{ collectionName }</p>
+        <p data-testid="artist-name" className="artist-name">{ artistName }</p>
       </li>
     );
   }
