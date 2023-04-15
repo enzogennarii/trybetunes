@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Header from '../components/Header';
+import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 import AlbumItem from '../components/AlbumItem';
 import getMusics from '../services/musicsAPI';
+import Header from '../components/Header';
+import Loading from '../components/Loading';
 import MusicCard from '../components/MusicCard';
 
 class Album extends Component {
@@ -12,13 +14,36 @@ class Album extends Component {
     this.state = {
       collection: [],
       tracks: [],
+      favoriteIsLoading: false,
+      favoriteSongs: [],
     };
 
     this.getCollectionData = this.getCollectionData.bind(this);
+    this.onFavorite = this.onFavorite.bind(this);
+    this.getFavoritesSongs = this.getFavoritesSongs.bind(this);
   }
 
   componentDidMount() {
     this.getCollectionData();
+    this.getFavoritesSongs();
+  }
+
+  async onFavorite({ target }) {
+    this.setState({
+      favoriteIsLoading: true,
+    });
+
+    const { tracks } = this.state;
+    const trackID = Number(target.value);
+    const trackObj = tracks.find((track) => track.trackId === trackID);
+    await addSong(trackObj);
+
+    const favorites = await getFavoriteSongs();
+
+    this.setState({
+      favoriteIsLoading: false,
+      favoriteSongs: favorites,
+    });
   }
 
   async getCollectionData() {
@@ -26,27 +51,36 @@ class Album extends Component {
     const data = await getMusics(id);
 
     this.setState({
-      collection: data.filter((obj) => obj.wrapperType === 'collection')[0],
+      collection: data.find((obj) => obj.wrapperType === 'collection'),
       tracks: data.filter((obj) => obj.wrapperType === 'track'),
     });
   }
 
+  async getFavoritesSongs() {
+    const favorites = await getFavoriteSongs();
+    this.setState({
+      favoriteSongs: favorites,
+    });
+  }
+
   render() {
-    const { collection, tracks } = this.state;
-    console.log(tracks);
+    const { collection, favoriteIsLoading, favoriteSongs, tracks } = this.state;
+    console.log(favoriteSongs);
 
     return (
       <div className="page-album" data-testid="page-album">
         <Header />
 
-        <section className="album-content">
-          <section className="album-section">
-            <AlbumItem collection={ collection } />
+        {favoriteIsLoading ? <Loading /> : (
+          <section className="album-content">
+            <section className="album-section">
+              <AlbumItem collection={ collection } />
+            </section>
+            <section className="tracks-section">
+              <MusicCard tracks={ tracks } onFavorite={ this.onFavorite } />
+            </section>
           </section>
-          <section className="tracks-section">
-            <MusicCard tracks={ tracks } />
-          </section>
-        </section>
+        )}
       </div>
     );
   }
