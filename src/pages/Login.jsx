@@ -37,9 +37,7 @@ class Login extends Component {
     });
 
     const { name } = this.state;
-    const user = {
-      name,
-    };
+    const user = { name };
     await createUser(user);
 
     history.push('/search');

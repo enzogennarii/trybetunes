@@ -42,7 +42,7 @@ MusicCard.defaultProps = {
 };
 
 MusicCard.propTypes = {
-  favorites: PropTypes.arrayOf(),
+  favorites: PropTypes.arrayOf(PropTypes.shape({})),
   onFavorite: PropTypes.func.isRequired,
   tracks: PropTypes.arrayOf(
     PropTypes.shape({

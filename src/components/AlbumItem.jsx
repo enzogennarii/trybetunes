@@ -27,10 +27,10 @@ class AlbumItem extends Component {
 
 AlbumItem.propTypes = {
   collection: PropTypes.shape({
-    artistName: PropTypes.string.isRequired,
-    collectionId: PropTypes.number.isRequired,
-    collectionName: PropTypes.string.isRequired,
-    artworkUrl100: PropTypes.string.isRequired,
+    artistName: PropTypes.string,
+    collectionId: PropTypes.number,
+    collectionName: PropTypes.string,
+    artworkUrl100: PropTypes.string,
   }).isRequired,
 };
 

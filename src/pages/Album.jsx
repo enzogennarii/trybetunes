@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
+import { addSong, removeSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 import AlbumItem from '../components/AlbumItem';
 import getMusics from '../services/musicsAPI';
 import Header from '../components/Header';
@@ -36,13 +36,19 @@ class Album extends Component {
     const { tracks } = this.state;
     const trackID = Number(target.value);
     const trackObj = tracks.find((track) => track.trackId === trackID);
-    await addSong(trackObj);
-
     const favorites = await getFavoriteSongs();
+
+    if (favorites.some((t) => t.trackId === trackObj.trackId)) {
+      await removeSong(trackObj);
+    } else {
+      await addSong(trackObj);
+    }
+
+    const newFavorites = await getFavoriteSongs();
 
     this.setState({
       favoriteIsLoading: false,
-      favoriteSongs: favorites,
+      favoriteSongs: newFavorites,
     });
   }
 
@@ -65,7 +71,6 @@ class Album extends Component {
 
   render() {
     const { collection, favoriteIsLoading, favoriteSongs, tracks } = this.state;
-    console.log(favoriteSongs);
 
     return (
       <div className="page-album" data-testid="page-album">
