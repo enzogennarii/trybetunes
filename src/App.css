@@ -253,6 +253,6 @@
   cursor: pointer;
 }
 
-.page-profile {
+.page-profile, .page-profile-edit {
   margin-left: 25rem;
 }
