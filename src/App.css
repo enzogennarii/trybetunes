@@ -248,3 +248,11 @@
   height: 40rem;
   overflow: scroll;
 }
+
+.edit-profile-btn {
+  cursor: pointer;
+}
+
+.page-profile {
+  margin-left: 25rem;
+}
