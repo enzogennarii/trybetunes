@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 class Input extends Component {
   render() {
-    const { id, name, onChange, placeholder, type, value } = this.props;
+    const { id, legend, name, onChange, placeholder, type, value } = this.props;
 
-    return (
+    const input = (
       <input
         className={ id }
         data-testid={ id }
@@ -17,11 +17,21 @@ class Input extends Component {
         value={ value }
       />
     );
+
+    if (!legend) return input;
+
+    return (
+      <label htmlFor={ id }>
+        { legend }
+        { input }
+      </label>
+    );
   }
 }
 
 Input.defaultProps = {
   id: '',
+  legend: '',
   name: '',
   onChange: () => {},
   placeholder: '',
@@ -31,6 +41,7 @@ Input.defaultProps = {
 
 Input.propTypes = {
   id: PropTypes.string,
+  legend: PropTypes.string,
   name: PropTypes.string,
   onChange: PropTypes.func,
   placeholder: PropTypes.string,

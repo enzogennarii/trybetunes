@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Loading from '../components/Loading';
-import Header from '../components/Header';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import AlbumItem from '../components/AlbumItem';
@@ -67,7 +66,6 @@ class Search extends Component {
 
     return (
       <div className="page-search" data-testid="page-search">
-        <Header />
         <section className="search-content">
           {isSearchLoading ? <Loading /> : (
             <>
@@ -90,11 +88,17 @@ class Search extends Component {
         </section>
         {!(searchResults.length) ? (
           <section className="search-results">
-            <h3>Nenhum álbum foi encontrado</h3>
+            <h3 className="empty-state">
+              { artistSearched
+                ? `Nenhum álbum foi encontrado para "${artistSearched}"`
+                : 'Busque um artista para ver os álbuns' }
+            </h3>
           </section>
         ) : (
           <section className="search-results">
-            <h3>{`Resultado de álbuns de: ${artistSearched}`}</h3>
+            <h3 className="results-title">
+              {`Resultado de álbuns de: ${artistSearched}`}
+            </h3>
             <ul className="collection-list">
               {searchResults.map((result) => (
                 <Link

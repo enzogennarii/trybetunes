@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../components/Header';
 import { getUser } from '../services/userAPI';
+import getGravatarUrl from '../services/gravatar';
 import Loading from '../components/Loading';
 import Button from '../components/Button';
 
@@ -34,18 +34,23 @@ class Profile extends Component {
   render() {
     const { isLoading, user } = this.state;
     const { name, email, image, description } = user;
+    const avatarUrl = image || getGravatarUrl(email);
 
     return (
       <div data-testid="page-profile" className="page-profile">
-        <Header />
-        <h1>Profile</h1>
+        <h1 className="page-title">Perfil</h1>
         {isLoading ? <Loading />
           : (
-            <div>
-              <img src={ image } alt="Avatar do usuário" data-testid="profile-image" />
-              <p>{ name }</p>
-              <p>{ email }</p>
-              <p>{ description }</p>
+            <div className="profile-content">
+              <img
+                className="profile-avatar"
+                src={ avatarUrl }
+                alt="Avatar do usuário"
+                data-testid="profile-image"
+              />
+              <p className="profile-name">{ name }</p>
+              <p className="profile-email">{ email }</p>
+              <p className="profile-description">{ description }</p>
               <Link to="/profile/edit">
                 <Button
                   id="edit-profile-btn"

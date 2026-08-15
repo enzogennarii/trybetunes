@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getUser } from '../services/userAPI';
-import Header from '../components/Header';
 import Loading from '../components/Loading';
 import EditProfileForm from '../components/EditProfileForm';
 
@@ -49,8 +48,7 @@ class ProfileEdit extends Component {
 
     return (
       <div data-testid="page-profile-edit" className="page-profile-edit">
-        <Header />
-        <h1>ProfileEdit</h1>
+        <h1 className="page-title">Editar perfil</h1>
         { isLoading ? <Loading /> : (
           <EditProfileForm
             user={ user }

@@ -41,15 +41,13 @@ class EditProfileForm extends Component {
   }
 
   isSaveBtnDisabled() {
-    const { name, email, description, image } = this.state;
+    const { email } = this.state;
 
-    const data = [name, email, description, image];
-    const isSomeDataEmpty = data.some((d) => d === '');
     const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    const isEmailInvalid = !regexEmail.test(email);
+    const isEmailInvalid = email !== '' && !regexEmail.test(email);
 
     this.setState({
-      isBtnDisabled: isSomeDataEmpty || isEmailInvalid,
+      isBtnDisabled: isEmailInvalid,
     });
   }
 
@@ -70,24 +68,32 @@ class EditProfileForm extends Component {
       <form>
         <Input
           id="edit-input-name"
+          legend="Nome"
           name="name"
           onChange={ this.handleInputChange }
           value={ name }
         />
         <Input
           id="edit-input-email"
+          legend="E-mail"
           name="email"
           onChange={ this.handleInputChange }
           value={ email }
         />
-        <textarea
-          data-testid="edit-input-description"
-          name="description"
-          onChange={ this.handleInputChange }
-          value={ description }
-        />
+        <label htmlFor="edit-input-description">
+          Descrição
+          <textarea
+            className="edit-input-description"
+            data-testid="edit-input-description"
+            id="edit-input-description"
+            name="description"
+            onChange={ this.handleInputChange }
+            value={ description }
+          />
+        </label>
         <Input
           id="edit-input-image"
+          legend="Foto de perfil (URL)"
           name="image"
           onChange={ this.handleInputChange }
           value={ image }

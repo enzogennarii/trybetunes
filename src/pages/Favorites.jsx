@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Header from '../components/Header';
 import { getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 import Loading from '../components/Loading';
 import MusicCard from '../components/MusicCard';
@@ -48,21 +47,28 @@ class Favorites extends Component {
     });
   }
 
-  render() {
+  renderContent() {
     const { favoritedTracks, isLoading } = this.state;
 
+    if (isLoading) return <Loading />;
+    if (!favoritedTracks.length) {
+      return <p className="empty-state">Nenhuma música favoritada ainda.</p>;
+    }
+
     return (
-      <div data-testid="page-favorites">
-        <Header />
-        <h1>Favorites</h1>
-        { isLoading ? <Loading />
-          : (
-            <MusicCard
-              favorites={ favoritedTracks }
-              onFavorite={ this.onUnfavorite }
-              tracks={ favoritedTracks }
-            />
-          ) }
+      <MusicCard
+        favorites={ favoritedTracks }
+        onFavorite={ this.onUnfavorite }
+        tracks={ favoritedTracks }
+      />
+    );
+  }
+
+  render() {
+    return (
+      <div className="page-favorites" data-testid="page-favorites">
+        <h1 className="page-title">Favoritas</h1>
+        { this.renderContent() }
       </div>
     );
   }

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { addSong, removeSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 import AlbumItem from '../components/AlbumItem';
 import getMusics from '../services/musicsAPI';
-import Header from '../components/Header';
 import Loading from '../components/Loading';
 import MusicCard from '../components/MusicCard';
 
@@ -74,8 +73,6 @@ class Album extends Component {
 
     return (
       <div className="page-album" data-testid="page-album">
-        <Header />
-
         {favoriteIsLoading ? <Loading /> : (
           <section className="album-content">
             <section className="album-section">

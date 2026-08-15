@@ -13,13 +13,14 @@ class MusicCard extends Component {
           <li className="track" key={ track.trackId }>
             <p className="track-name">{track.trackName}</p>
             <audio
+              className="audio-player"
               data-testid="audio-component"
               src={ track.previewUrl }
               controls
             >
               <track kind="captions" />
             </audio>
-            <label htmlFor="checkbox-favorite">
+            <label className="favorite-label" htmlFor="checkbox-favorite">
               <input
                 checked={ verifyIfIsFavorited(track.trackId) }
                 data-testid={ `checkbox-music-${track.trackId}` }
